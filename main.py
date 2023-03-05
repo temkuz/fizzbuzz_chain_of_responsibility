@@ -52,7 +52,7 @@ class FizzHandler(Handler):
 
 
 class DefaultHandler(Handler):
-    """andler that will fire if all other handlers are passed"""
+    """Handler that will fire if all other handlers are passed"""
 
     def handle(self, data):
         return data
