@@ -51,9 +51,17 @@ class SolveHandler(Handler):
         return self.next_handler.handle(data)
 
 
-default = DefaultHandler()
-fizz = FizzHandler(default)
-buzz = BuzzHandler(fizz)
-fizz_buzz = FizzBuzzHandler(buzz)
-is_integer = IntegerHandler(fizz_buzz)
+def main():
+    default = DefaultHandler()
+    fizz = FizzHandler(default)
+    buzz = BuzzHandler(fizz)
+    fizz_buzz = FizzBuzzHandler(buzz)
+    is_integer = IntegerHandler(fizz_buzz)
+    solve = SolveHandler(is_integer)
 
+    for i in range(100):
+        print(solve.handle(i))
+
+
+if __name__ == '__main__':
+    main()
