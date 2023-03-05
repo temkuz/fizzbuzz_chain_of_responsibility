@@ -3,6 +3,8 @@ from abc import ABC, abstractmethod
 
 
 class Handler(ABC):
+    """Base class for handlers"""
+
     def __init__(self, handler: 'Handler' = None):
         self.next_handler = handler
 
@@ -14,6 +16,8 @@ class Handler(ABC):
 
 
 class IntegerHandler(Handler):
+    """Handler to check if the input is integer"""
+
     def handle(self, data):
         if not isinstance(data, int):
             raise TypeError('Input must be int')
@@ -21,6 +25,8 @@ class IntegerHandler(Handler):
 
 
 class FizzBuzzHandler(Handler):
+    """Handler to check if the input is divisible by 15"""
+
     def handle(self, data):
         if data % 15 == 0:
             return 'FizzBuzz'
@@ -28,6 +34,8 @@ class FizzBuzzHandler(Handler):
 
 
 class BuzzHandler(Handler):
+    """Handler to check if the input is divisible by 5"""
+
     def handle(self, data):
         if data % 5 == 0:
             return 'Buzz'
@@ -35,6 +43,8 @@ class BuzzHandler(Handler):
 
 
 class FizzHandler(Handler):
+    """Handler to check if the input is divisible by 3"""
+
     def handle(self, data):
         if data % 3 == 0:
             return 'Fizz'
@@ -42,11 +52,15 @@ class FizzHandler(Handler):
 
 
 class DefaultHandler(Handler):
+    """andler that will fire if all other handlers are passed"""
+
     def handle(self, data):
         return data
 
 
 class SolveHandler(Handler):
+    """Handler that is the entry point"""
+
     def handle(self, data):
         return self.next_handler.handle(data)
 
